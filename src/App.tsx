@@ -1,16 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import Container from '@mui/material/Container';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Container className='main-container'>
-      <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes>
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{ backgroundColor: '#EAEDED', minHeight: '100vh' }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </Container>
   );
-}
+};
 
 export default App;

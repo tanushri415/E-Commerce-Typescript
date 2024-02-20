@@ -1,0 +1,32 @@
+/* .headerContainer {
+    height: 60px;
+    background-color:black;
+} */
+
+.header_bottom {
+    display: flex;
+    background-color: darkslategrey;
+
+}
+
+.headerText {
+    font-size: 13px;
+    color: white;
+    font-weight: 500;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.categoryDrawer__item {
+    text-transform: capitalize;
+    text-decoration: none;
+    color: black;
+}
+
+.category__item {
+    text-transform: capitalize;
+    text-decoration: none;
+    color: white;
+}
