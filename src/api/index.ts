@@ -1,4 +1,4 @@
-import { AuthenticationResponse, Order, Product, User } from '../model';
+import { AuthenticationResponse, Order, Product } from '../model';
 
 const baseUrl: string = import.meta.env.VITE_API_BASE
   ? import.meta.env.VITE_API_BASE
@@ -59,11 +59,9 @@ const loginUser = async (
 //productApi
 const getAllProducts = async (): Promise<Product[]> => {
   try {
-    let products: Product[] = [];
-    await fetch(productsBaseUrl)
-      .then((res) => res.json())
-      .then((data) => (products = data));
-    return products;
+    const response = await fetch(`${productsBaseUrl}`);
+    const body = await response.json();
+    return body;
   } catch (error) {
     console.error('something went wrong while getting all products!', error);
     throw error;

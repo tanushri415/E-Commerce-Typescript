@@ -1,4 +1,4 @@
-import {
+import React, {
   MouseEventHandler,
   SyntheticEvent,
   useContext,
@@ -56,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Header = () => {
+const Header: React.FC = () => {
   const [productCategories, setProductCategories] = useState<string[]>([]);
   const [username, setUserName] = useState('Sign In');
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
