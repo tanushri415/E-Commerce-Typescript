@@ -21,7 +21,7 @@ interface Product {
   title: string;
   description: string;
   category: string;
-  price: string;
+  price: number;
   image: string;
   rating: number;
 }
@@ -38,4 +38,9 @@ interface Order {
   products: CartItem[];
 }
 
-export type { AuthenticationResponse, OrderResponse, User, Product, CartItem, Order };
+interface ProductFilter {
+  price: { minPrice?: number; maxPrice?: number };
+  rating: number;
+}
+
+export type { AuthenticationResponse, OrderResponse, User, Product, CartItem, Order, ProductFilter };
