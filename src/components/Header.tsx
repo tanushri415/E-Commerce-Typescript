@@ -1,10 +1,4 @@
-import React, {
-  MouseEventHandler,
-  SyntheticEvent,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { MouseEventHandler, SyntheticEvent, useContext, useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -139,10 +133,7 @@ const Header: React.FC = () => {
                   {productCategories?.map((category, index) => {
                     return (
                       <MenuItem className='categoryDrawer__item' key={index}>
-                        <a
-                          href={`/?category=${category}`}
-                          className='categoryDrawer__item'
-                          key={index}>
+                        <a href={`/?category=${category}`} className='categoryDrawer__item' key={index}>
                           {category}
                         </a>
                       </MenuItem>
@@ -177,27 +168,23 @@ const Header: React.FC = () => {
               onKeyDown={handleKeyDown}
             />
           </Search>
-          <Box component='a' href={isUserLoggedIn ? '#' : '/login'}>
+          <Box component='a' href={isUserLoggedIn ? '#' : '/login'} sx={{ textDecoration: 'none' }}>
             <h4 className='headerText'>Hello,</h4>
             <h4 className='headerText'>{username}</h4>
           </Box>
-          {/* {isUserLoggedIn && (
-            <Box component='a' href='/orders'>
+          {isUserLoggedIn && (
+            <Box component='a' href='/orders' sx={{ textDecoration: 'none' }}>
               <h4 className='headerText'>Returns</h4>
               <h4 className='headerText'>Orders</h4>
             </Box>
-          )} */}
-          {/* <Tooltip title='Cart'>
-            <IconButton
-              size='large'
-              aria-label={`show ${cartItems?.length} items`}
-              color='inherit'
-              href={`/cart`}>
-              <Badge badgeContent={cartItems?.length} color='error' showZero>
+          )}
+          <Tooltip title='Cart'>
+            <IconButton size='large' color='inherit' href={`/cart`}>
+              <Badge badgeContent={0} color='error' showZero>
                 <ShoppingCartOutlinedIcon />
               </Badge>
             </IconButton>
-          </Tooltip> */}
+          </Tooltip>
           {isUserLoggedIn && (
             <Tooltip title='Logout'>
               <IconButton
@@ -225,10 +212,7 @@ const Header: React.FC = () => {
         className='header_bottom'>
         {productCategories?.map((category, index) => {
           return (
-            <a
-              href={`/?category=${category}`}
-              className='category__item'
-              key={index}>
+            <a href={`/?category=${category}`} className='category__item' key={index}>
               {category}
             </a>
           );

@@ -6,7 +6,7 @@ import { userApi } from '../api';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 
-const Register1 = () => {
+const Register = () => {
   const navigate = useNavigate();
 
   const [registrationError, setRegistrationError] = useState('');
@@ -23,9 +23,7 @@ const Register1 = () => {
     },
   });
 
-  const handleFormElementChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleFormElementChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     setRegistrationError('');
     const { name, value } = e.target;
@@ -63,16 +61,10 @@ const Register1 = () => {
     setFormValues(newFormValues);
     if (!formHasError) {
       //call the register api hear
-      const result = await userApi.registerUser(
-        newFormValues.username.value,
-        newFormValues.password.value
-      );
+      const result = await userApi.registerUser(newFormValues.username.value, newFormValues.password.value);
       if (result.name) {
         //there is some error
-        if (
-          result.name === 'UserAlreadyExistsError' ||
-          result.name === 'PasswordLengthError'
-        ) {
+        if (result.name === 'UserAlreadyExistsError' || result.name === 'PasswordLengthError') {
           setRegistrationError(result.error);
         }
       } else {
@@ -127,9 +119,7 @@ const Register1 = () => {
               paddingRight: '24px',
               width: '100%',
             }}>
-            <Typography
-              variant='h5'
-              sx={{ textAlign: 'center', marginBottom: '10px' }}>
+            <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '10px' }}>
               Create Account
             </Typography>
             <InputLabel
@@ -155,9 +145,7 @@ const Register1 = () => {
               value={formValues.username.value}
               error={formValues.username.error}
               onChange={handleFormElementChange}
-              helperText={
-                formValues.username.error && formValues.username.errorMessage
-              }
+              helperText={formValues.username.error && formValues.username.errorMessage}
             />
             <InputLabel
               sx={{
@@ -182,9 +170,7 @@ const Register1 = () => {
               value={formValues.password.value}
               error={formValues.password.error}
               onChange={handleFormElementChange}
-              helperText={
-                formValues.password.error && formValues.password.errorMessage
-              }
+              helperText={formValues.password.error && formValues.password.errorMessage}
             />
             <Typography
               sx={{
@@ -195,11 +181,7 @@ const Register1 = () => {
               }}>
               {registrationError}
             </Typography>
-            <Button
-              color='gold'
-              variant='contained'
-              size='medium'
-              type='submit'>
+            <Button color='gold' variant='contained' size='medium' type='submit'>
               Register
             </Button>
           </Box>
@@ -208,4 +190,4 @@ const Register1 = () => {
     </Box>
   );
 };
-export default Register1;
+export default Register;

@@ -6,7 +6,7 @@ import { userApi } from '../api';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 
-const Login1 = () => {
+const Login = () => {
   const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState('');
@@ -23,9 +23,7 @@ const Login1 = () => {
     },
   });
 
-  const handleFormElementChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleFormElementChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     setLoginError('');
     const { name, value } = e.target;
@@ -64,17 +62,11 @@ const Login1 = () => {
     setFormValues(newFormValues);
     if (!formHasError) {
       //call the register api hear
-      const result = await userApi.loginUser(
-        newFormValues.username.value,
-        newFormValues.password.value
-      );
+      const result = await userApi.loginUser(newFormValues.username.value, newFormValues.password.value);
 
       if (result.name) {
         //there is some error
-        if (
-          result.name === 'InvalidCredentialsError' ||
-          result.name === 'MissingCredentialsError'
-        ) {
+        if (result.name === 'InvalidCredentialsError' || result.name === 'MissingCredentialsError') {
           setLoginError(result.error);
         }
       } else {
@@ -85,9 +77,7 @@ const Login1 = () => {
       }
     }
   };
-  const handleRegisterAccount = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
+  const handleRegisterAccount = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     navigate('/register');
   };
@@ -134,9 +124,7 @@ const Login1 = () => {
               paddingRight: '24px',
               width: '100%',
             }}>
-            <Typography
-              variant='h5'
-              sx={{ textAlign: 'center', marginBottom: '10px' }}>
+            <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '10px' }}>
               Login to your Account
             </Typography>
             <InputLabel
@@ -162,9 +150,7 @@ const Login1 = () => {
               value={formValues.username.value}
               error={formValues.username.error}
               onChange={handleFormElementChange}
-              helperText={
-                formValues.username.error && formValues.username.errorMessage
-              }
+              helperText={formValues.username.error && formValues.username.errorMessage}
             />
             <InputLabel
               sx={{
@@ -189,9 +175,7 @@ const Login1 = () => {
               value={formValues.password.value}
               error={formValues.password.error}
               onChange={handleFormElementChange}
-              helperText={
-                formValues.password.error && formValues.password.errorMessage
-              }
+              helperText={formValues.password.error && formValues.password.errorMessage}
             />
             <Typography
               sx={{
@@ -202,24 +186,14 @@ const Login1 = () => {
               }}>
               {loginError}
             </Typography>
-            <Button
-              color='gold'
-              variant='contained'
-              size='medium'
-              type='submit'>
+            <Button color='gold' variant='contained' size='medium' type='submit'>
               Login
             </Button>
           </Box>
-          <Typography
-            variant='h5'
-            sx={{ textAlign: 'center', marginBottom: '10px' }}>
+          <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '10px' }}>
             New to Amazon?
           </Typography>
-          <Button
-            color='gold'
-            variant='contained'
-            size='large'
-            onClick={handleRegisterAccount}>
+          <Button color='gold' variant='contained' size='large' onClick={handleRegisterAccount}>
             Create your Account
           </Button>
         </Stack>
@@ -228,4 +202,4 @@ const Login1 = () => {
   );
 };
 
-export default Login1;
+export default Login;

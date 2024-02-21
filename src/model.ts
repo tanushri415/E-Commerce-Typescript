@@ -38,11 +38,4 @@ interface Order {
   products: CartItem[];
 }
 
-export type {
-  AuthenticationResponse,
-  OrderResponse,
-  User,
-  Product,
-  CartItem,
-  Order,
-};
+export type { AuthenticationResponse, OrderResponse, User, Product, CartItem, Order };

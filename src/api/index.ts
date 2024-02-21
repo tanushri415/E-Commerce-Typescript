@@ -1,17 +1,12 @@
 import { AuthenticationResponse, Order, Product } from '../model';
 
-const baseUrl: string = import.meta.env.VITE_API_BASE
-  ? import.meta.env.VITE_API_BASE
-  : '/api';
+const baseUrl: string = import.meta.env.VITE_API_BASE ? import.meta.env.VITE_API_BASE : '/api';
 const userBaseUrl: string = `${baseUrl}/users`;
 const productsBaseUrl: string = `${baseUrl}/products`;
 const cartsBaseUrl: string = `${baseUrl}/carts`;
 
 //userApi
-const registerUser = async (
-  username: string,
-  password: string
-): Promise<AuthenticationResponse> => {
+const registerUser = async (username: string, password: string): Promise<AuthenticationResponse> => {
   try {
     const resp = await fetch(`${userBaseUrl}/register`, {
       method: 'POST',
@@ -32,10 +27,7 @@ const registerUser = async (
   }
 };
 
-const loginUser = async (
-  username: string,
-  password: string
-): Promise<AuthenticationResponse> => {
+const loginUser = async (username: string, password: string): Promise<AuthenticationResponse> => {
   try {
     const resp = await fetch(`${userBaseUrl}/login`, {
       method: 'POST',
@@ -74,17 +66,12 @@ const getProductCategories = async (): Promise<string[]> => {
     const body = await response.json();
     return body;
   } catch (error) {
-    console.error(
-      'something went wrong while getting all product categories!',
-      error
-    );
+    console.error('something went wrong while getting all product categories!', error);
     throw error;
   }
 };
 
-const getProductsOfSpecificCategory = async (
-  category: string
-): Promise<Product[]> => {
+const getProductsOfSpecificCategory = async (category: string): Promise<Product[]> => {
   try {
     let products: Product[] = [];
     await fetch(`${productsBaseUrl}/category/${category}`)
@@ -92,10 +79,7 @@ const getProductsOfSpecificCategory = async (
       .then((data) => (products = data));
     return products;
   } catch (error) {
-    console.error(
-      'something went wrong while getting all product for category!',
-      error
-    );
+    console.error('something went wrong while getting all product for category!', error);
     throw error;
   }
 };
@@ -108,10 +92,7 @@ const getProductByid = async (productId: string): Promise<Product[]> => {
       .then((data) => (product = data));
     return product;
   } catch (error) {
-    console.error(
-      `something went wrong while getting product with id ${productId}!`,
-      error
-    );
+    console.error(`something went wrong while getting product with id ${productId}!`, error);
     throw error;
   }
 };
@@ -125,10 +106,7 @@ const getUserCarts = async (userId: string): Promise<Order[]> => {
       .then((data) => (carts = data));
     return carts;
   } catch (error) {
-    console.error(
-      `something went wrong while getting carts for user with id ${userId}!`,
-      error
-    );
+    console.error(`something went wrong while getting carts for user with id ${userId}!`, error);
     throw error;
   }
 };
