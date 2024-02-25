@@ -10,7 +10,13 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [registrationError, setRegistrationError] = useState('');
-  const [formValues, setFormValues] = useState({
+  const [formValues, setFormValues] = useState<{
+    [key: string]: {
+      value: string;
+      error: boolean;
+      errorMessage: string;
+    };
+  }>({
     username: {
       value: '',
       error: false,

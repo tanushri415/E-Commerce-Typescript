@@ -70,10 +70,10 @@ const Home: React.FC = () => {
       let filteredProds = products;
       if (filter.price !== null && filter.price !== undefined) {
         if (filter.price.minPrice !== undefined) {
-          filteredProds = filteredProds.filter((product) => product.price >= filter.price.minPrice);
+          filteredProds = filteredProds.filter((product) => product.price >= filter.price.minPrice!);
         }
         if (filter.price.maxPrice !== undefined) {
-          filteredProds = filteredProds.filter((product) => product.price <= filter.price.maxPrice);
+          filteredProds = filteredProds.filter((product) => product.price <= filter.price.maxPrice!);
         }
       }
       if (filter.rating !== 0) {

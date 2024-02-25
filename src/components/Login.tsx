@@ -10,7 +10,13 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState('');
-  const [formValues, setFormValues] = useState({
+  const [formValues, setFormValues] = useState<{
+    [key: string]: {
+      value: string;
+      error: boolean;
+      errorMessage: string;
+    };
+  }>({
     username: {
       value: '',
       error: false,
