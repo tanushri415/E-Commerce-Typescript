@@ -84,13 +84,11 @@ const getProductsOfSpecificCategory = async (category: string): Promise<Product[
   }
 };
 
-const getProductByid = async (productId: string): Promise<Product[]> => {
+const getProductByid = async (productId: number): Promise<Product> => {
   try {
-    let product: Product[] = [];
-    await fetch(`${productsBaseUrl}/${productId}`)
-      .then((res) => res.json())
-      .then((data) => (product = data));
-    return product;
+    const response = await fetch(`${productsBaseUrl}/${productId}`);
+    const body = await response.json();
+    return body;
   } catch (error) {
     console.error(`something went wrong while getting product with id ${productId}!`, error);
     throw error;
