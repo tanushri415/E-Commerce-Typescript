@@ -36,7 +36,7 @@ const ProductDetails = () => {
           justifyContent: 'center',
           marginTop: '100px',
         }}>
-        <ProductComponent detailMode={true} key={product?.id} item={product} />
+        {product && <ProductComponent detailMode={true} key={product?.id} item={product} />}
         {/* <button className='backToProducts'>Back to Products</button> */}
       </Box>
     </Box>

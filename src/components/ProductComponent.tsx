@@ -1,4 +1,3 @@
-import { useContext, useState } from 'react';
 import './Product.css';
 // import { CartContext } from '../context/cart';
 import { useNavigate } from 'react-router-dom';
@@ -10,8 +9,8 @@ interface Props {
 }
 const ProductComponent: React.FC<Props> = ({ item, detailMode = false }) => {
   //   const { addToCart } = useContext(CartContext);
-  const [buttonText, setButtonText] = useState('Add to cart');
-  const [productButton, setProductButton] = useState('productButton');
+  // const [buttonText, setButtonText] = useState('Add to cart');
+  // const [productButton, setProductButton] = useState('productButton');
 
   //   const addToCartHandler = () => {
   //     addToCart(item);
