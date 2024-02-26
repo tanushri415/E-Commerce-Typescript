@@ -133,7 +133,11 @@ const Header: React.FC = () => {
                   {productCategories?.map((category, index) => {
                     return (
                       <MenuItem className='categoryDrawer__item' key={index}>
-                        <a href={`/?category=${category}`} className='categoryDrawer__item' key={index}>
+                        <a
+                          href={`/?category=${category}`}
+                          className='categoryDrawer__item'
+                          aria-label={category}
+                          key={index}>
                           {category}
                         </a>
                       </MenuItem>
@@ -143,7 +147,7 @@ const Header: React.FC = () => {
               </Box>
             </Box>
           </Drawer>
-          <a href='/'>
+          <a href='/' aria-label='Home'>
             <Typography
               sx={{
                 textIndent: '-500px',

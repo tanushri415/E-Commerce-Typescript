@@ -83,10 +83,6 @@ const Login = () => {
       }
     }
   };
-  const handleRegisterAccount = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    navigate('/register');
-  };
 
   return (
     <Box
@@ -199,7 +195,7 @@ const Login = () => {
           <Typography variant='h5' sx={{ textAlign: 'center', marginBottom: '10px' }}>
             New to Amazon?
           </Typography>
-          <Button color='gold' variant='contained' size='large' onClick={handleRegisterAccount}>
+          <Button color='gold' variant='contained' size='large' href='/register'>
             Create your Account
           </Button>
         </Stack>

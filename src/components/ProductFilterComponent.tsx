@@ -70,8 +70,8 @@ const ProductFilterComponent: React.FC<Props> = ({ minPrice, maxPrice, onFilterC
   const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
   const [rating, setRating] = useState<number>(0);
 
-  const handlePriceRangeChange = (newValue: number[]) => {
-    setPriceRange(newValue);
+  const handlePriceRangeChange = (_event: Event, newValue: number | number[]) => {
+    setPriceRange(newValue as number[]);
   };
 
   useEffect(() => {

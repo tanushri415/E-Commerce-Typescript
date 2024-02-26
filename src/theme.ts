@@ -1,13 +1,20 @@
 // import { red } from '@mui/material/colors';
-import { alpha, createTheme, getContrastRatio } from '@mui/material';
+import { PaletteColorOptions, alpha, createTheme, getContrastRatio } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface Palette {
-    gold: Palette['primary'];
+    gold?: Palette['primary'];
   }
 
   interface PaletteOptions {
-    gold?: PaletteOptions['primary'];
+    gold?: PaletteColorOptions;
+  }
+}
+
+// Update the Button's color options to include an ochre option
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    gold?: true;
   }
 }
 

@@ -26,7 +26,7 @@ const ProductComponent: React.FC<Props> = ({ item, detailMode = false }) => {
   const navigate = useNavigate();
   return (
     <div className={`product ${detailMode ? 'detailed' : ''}`}>
-      <a href={`/product/${item?.id}`}>
+      <a href={`/product/${item?.id}`} aria-label={item?.title}>
         <img className='product__image' src={item?.image} />
       </a>
       {detailMode === true ? (
