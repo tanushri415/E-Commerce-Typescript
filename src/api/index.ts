@@ -96,13 +96,11 @@ const getProductByid = async (productId: number): Promise<Product> => {
 };
 
 //cartApi
-const getUserCarts = async (userId: string): Promise<Order[]> => {
+const getUserCarts = async (userId: number): Promise<Order[]> => {
   try {
-    let carts: Order[] = [];
-    await fetch(`${cartsBaseUrl}/user/${userId}`)
-      .then((res) => res.json())
-      .then((data) => (carts = data));
-    return carts;
+    const response = await fetch(`${cartsBaseUrl}/user/${userId}`);
+    const body = await response.json();
+    return body;
   } catch (error) {
     console.error(`something went wrong while getting carts for user with id ${userId}!`, error);
     throw error;

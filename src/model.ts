@@ -29,6 +29,7 @@ interface Product {
 interface CartItem {
   productId: number;
   quantity: number;
+  product: Product;
 }
 
 interface Order {
