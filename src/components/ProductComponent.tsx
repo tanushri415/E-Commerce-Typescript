@@ -1,27 +1,28 @@
 import './Product.css';
-// import { CartContext } from '../context/cart';
+import { CartContext, CartContextType } from './context/cart';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../model';
+import { useContext, useState } from 'react';
 
 interface Props {
   item: Product;
   detailMode?: boolean;
 }
 const ProductComponent: React.FC<Props> = ({ item, detailMode = false }) => {
-  //   const { addToCart } = useContext(CartContext);
-  // const [buttonText, setButtonText] = useState('Add to cart');
-  // const [productButton, setProductButton] = useState('productButton');
+  const { addToCart } = useContext(CartContext) as CartContextType;
+  const [buttonText, setButtonText] = useState('Add to cart');
+  const [productButton, setProductButton] = useState('productButton');
 
-  //   const addToCartHandler = () => {
-  //     addToCart(item);
-  //     setButtonText('Item added');
-  //     setProductButton('new-btn');
-  //     let reinit = () => {
-  //       setButtonText('Add to cart');
-  //       setProductButton('productButton');
-  //     };
-  //     setTimeout(reinit, 1000);
-  //   };
+  const addToCartHandler = () => {
+    addToCart(item);
+    setButtonText('Item added');
+    setProductButton('new-btn');
+    const reinit = () => {
+      setButtonText('Add to cart');
+      setProductButton('productButton');
+    };
+    setTimeout(reinit, 1000);
+  };
 
   const navigate = useNavigate();
   return (
@@ -42,14 +43,14 @@ const ProductComponent: React.FC<Props> = ({ item, detailMode = false }) => {
         <span className='product__price__currency'>$</span>
         <span className='product__price'>{item?.price}</span>
       </span>
-      {/* <button
+      <button
         className={productButton}
-        onClick={(event) => {
-          // addToCartHandler(event);
+        onClick={() => {
+          addToCartHandler();
           console.log('add to cart called');
         }}>
         {buttonText}
-      </button> */}
+      </button>
       {detailMode === true && (
         <button
           className='productButton'

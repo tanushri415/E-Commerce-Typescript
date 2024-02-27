@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import React, { SyntheticEvent, useContext, useEffect, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -19,6 +19,7 @@ import { productApi } from '../api';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../model';
+import { CartContext, CartContextType } from './context/cart';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -55,6 +56,7 @@ const Header: React.FC = () => {
   const [username, setUserName] = useState('Sign In');
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>('');
+  const { cartItems } = useContext(CartContext) as CartContextType;
   const navigate = useNavigate();
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -184,7 +186,7 @@ const Header: React.FC = () => {
           )}
           <Tooltip title='Cart'>
             <IconButton size='large' color='inherit' href={`/cart`}>
-              <Badge badgeContent={0} color='error' showZero>
+              <Badge badgeContent={cartItems?.length} color='error' showZero>
                 <ShoppingCartOutlinedIcon />
               </Badge>
             </IconButton>

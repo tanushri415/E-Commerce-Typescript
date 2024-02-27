@@ -6,18 +6,21 @@ import Login from './components/Login';
 import Register from './components/Register';
 import ProductDetails from './components/ProductDetails';
 import Orders from './components/Orders';
+import { CartProvider } from './components/context/cart';
 
 const App: React.FC = () => {
   return (
     <Container maxWidth={false} disableGutters sx={{ backgroundColor: '#EAEDED', minHeight: '100vh' }}>
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/product/:productId' element={<ProductDetails />} />
-          <Route path='/orders' element={<Orders />} />
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/product/:productId' element={<ProductDetails />} />
+            <Route path='/orders' element={<Orders />} />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </Container>
   );
