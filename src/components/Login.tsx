@@ -188,7 +188,17 @@ const Login = () => {
               }}>
               {loginError}
             </Typography>
-            <Button color='gold' variant='contained' size='medium' type='submit'>
+            <Button
+              color='gold'
+              variant='contained'
+              size='medium'
+              type='submit'
+              sx={{
+                fontWeight: 'bold',
+                textWrap: 'nowrap',
+                marginTop: '25px',
+                width: '100%',
+              }}>
               Login
             </Button>
           </Box>
