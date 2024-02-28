@@ -1,7 +1,7 @@
 import { Box, Container, InputLabel, Stack, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { userApi } from '../api';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
@@ -29,7 +29,7 @@ const Login = () => {
     },
   });
 
-  const handleFormElementChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleFormElementChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     setLoginError('');
     const { name, value } = e.target;
@@ -43,7 +43,7 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let formHasError = false;
     const formFields = Object.keys(formValues);

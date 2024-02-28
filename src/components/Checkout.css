@@ -1,0 +1,15 @@
+.table {
+    border-collapse:separate;
+    border-spacing:0 15px;
+}
+
+.animate-enter{
+    opacity: 0;
+    transform: translateY(-200px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.animate-enter-active {
+    opacity: 1;
+    transform: translateY(0)
+}

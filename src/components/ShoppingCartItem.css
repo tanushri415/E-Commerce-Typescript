@@ -1,0 +1,21 @@
+.cartitem-row {
+    display: table-row;
+}
+
+.cartitem-row-cell {
+    display: table-cell;
+    list-style: none;
+    vertical-align: top;
+    height: 180px;
+}
+
+.cartitem-info {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 120px;
+}
+
+.cartitem-image {
+    width: 180px;
+    position: relative;
+}

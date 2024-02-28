@@ -7,7 +7,6 @@ const OrderSummary = ({ showChkoutBtn = true }) => {
   return (
     <Card
       variant='outlined'
-      //   align='right'
       sx={{
         minWidth: 275,
         padding: 3,
@@ -29,7 +28,7 @@ const OrderSummary = ({ showChkoutBtn = true }) => {
             fontWeight: 'bold',
             textWrap: 'nowrap',
             marginTop: '25px',
-            width: '30px',
+            width: '100%',
           }}>
           Continue to Checkout
         </Button>

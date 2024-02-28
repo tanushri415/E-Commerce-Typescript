@@ -7,6 +7,8 @@ import Register from './components/Register';
 import ProductDetails from './components/ProductDetails';
 import Orders from './components/Orders';
 import { CartProvider } from './components/context/cart';
+import ShoppingCart from './components/ShoppingCart';
+import Checkout from './components/Checkout';
 
 const App: React.FC = () => {
   return (
@@ -15,10 +17,12 @@ const App: React.FC = () => {
         <CartProvider>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/product/:productId' element={<ProductDetails />} />
+            <Route path='/cart' element={<ShoppingCart />} />
             <Route path='/orders' element={<Orders />} />
+            <Route path='/checkout' element={<Checkout />} />
           </Routes>
         </CartProvider>
       </BrowserRouter>
